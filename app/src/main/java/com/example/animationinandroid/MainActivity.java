@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtAndroid;
     private ImageView imgTiger;
     private ImageView imgLeopard;
+    private Button btnUI;
     private boolean isHelloWorldShowing=false;
     private boolean isTigerShowing=false;
 
@@ -28,6 +30,11 @@ public class MainActivity extends AppCompatActivity {
         imgTiger=findViewById(R.id.imgTiger);
         imgLeopard=findViewById(R.id.imgLeopard);
         txtAndroid=findViewById(R.id.txtAndroid);
+        btnUI=findViewById(R.id.btnUI);
+
+        txtHelloWorld.setX(3000);
+        txtHiWorld.setX(-3000);
+        txtAndroid.setY(-3000);
         txtHelloWorld.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,8 +75,9 @@ public class MainActivity extends AppCompatActivity {
                 //txtAndroid.animate().translationX(-3000).setDuration(3000);
                 //sliding the text view towards the bottom
                 //txtAndroid.animate().translationY(3000).setDuration(3000);
-                //sliding the text view towards the bottom
-                txtAndroid.animate().translationY(200).rotation(360f).setDuration(3000);
+                //sliding the text view towards the bottom with some rotation
+                //txtAndroid.animate().translationY(200).rotation(360f).setDuration(3000);
+                txtAndroid.animate().rotationX(720).translationY(100).setDuration(4000);
                 //txtAndroid.animate().rotation(360f).setDuration(3000);
             }
         });
@@ -88,6 +96,17 @@ public class MainActivity extends AppCompatActivity {
                     isTigerShowing=true;
 
                 }
+            }
+        });
+
+
+
+        btnUI.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtHelloWorld.animate().translationXBy(-3000).rotation(45).setDuration(3000);
+                txtHiWorld.animate().translationXBy(3000).rotation(135).setDuration(2000);
+                txtAndroid.animate().translationYBy(3000).alpha(0.7f).setDuration(4000);
             }
         });
 
